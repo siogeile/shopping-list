@@ -15,21 +15,30 @@ SHEET = GSPREAD_CLIENT.open('shopping-list')
 
 # FUNCTIONS
 
-def get_shopping_list():
+def shopping_list_items():
     """
-    Pulls all values from the shopping list
+    returns the values of the shopping list
     """
-    print("Loading your shopping list...\n")
     shopping = SHEET.worksheet('shopping')
     #gets all the values in the first column of the 'shopping' sheet
     shopping_list_data = shopping.col_values(1)
 
-    for item in shopping_list_data:
+    return shopping_list_data[1:]
+
+shopping_list = shopping_list_items()
+
+def print_shopping_list():
+    """
+    Prints the shopping list to the terminal
+    """
+    print("Loading your shopping list...\n")
+    print("Shopping List:")
+    for item in shopping_list:
         print(item)
     
     print("")
 
-get_shopping_list()
+print_shopping_list()
 
 def add_new_items():
     """
