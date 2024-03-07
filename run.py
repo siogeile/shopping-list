@@ -23,6 +23,7 @@ def add_new_items():
     print("Example: Spinach, Ginger ale, Chocolate\n")
 
     data_str = input("Add items to your list here: ")
-    print(f"You have added {data_str} to your list")
+    new_items = data_str.split(",")
+    print(f"You have added {new_items} to your list")
 
 add_new_items()
