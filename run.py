@@ -14,6 +14,15 @@ SHEET = GSPREAD_CLIENT.open('shopping-list')
 
 shopping = SHEET.worksheet('shopping')
 
-data = shopping.get_all_values()
+def add_new_items():
+    """
+    Get item names input from the user
+    """
+    print("Add items to your shopping list.")
+    print("Separate items with commas")
+    print("Example: Spinach, Ginger ale, Chocolate\n")
 
-print(data)
+    data_str = input("Add items to your list here: ")
+    print(f"You have added {data_str} to your list")
+
+add_new_items()
