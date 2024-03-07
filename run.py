@@ -20,7 +20,7 @@ def shopping_list_items():
     returns the values of the shopping list
     """
     shopping = SHEET.worksheet('shopping')
-    #gets all the values in the first column of the 'shopping' sheet
+    #gets all the values in the shopping list without the headings row
     shopping_list_data = shopping.col_values(1)
 
     return shopping_list_data[1:]
