@@ -37,7 +37,7 @@ def main_menu():
         8. Exit''')
         print("")
 
-        selection = input("What would you like to do?: ")
+        selection = input("What would you like to do?:\n ")
         print("")
 
         if selection == "1":
