@@ -42,6 +42,7 @@ Happy coding!
 #### [Geek Tutorials](https://www.youtube.com/watch?v=0m7csmqWAgI) on YouTube
 
 *  Used code from "Python - Code a Shopping List App (Part 1/3) to get me started in commit f1d5751
+* Started to write my own code within this code in commit eacf398 when adding functions to menu items 1 and 2
 
 
 ## Journal
