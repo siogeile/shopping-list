@@ -16,15 +16,58 @@ SHEET = GSPREAD_CLIENT.open('shopping-list')
 
 # FUNCTIONS
 
+# Code copied with edits from Geek Tutorials on YouTube
+def main_menu():
+    """
+    Load a menu that will loop back once the functions in the
+    selections complete
+    """
+    while True:
+        print('''
+
+        Select the number of the action that you would like to do:
+
+        1. View Shopping List
+        2. Add items to shopping list
+        3. View all items
+        4. Remove item from shopping list
+        5. Check if item is on shopping list
+        6. Clear Shopping List
+        7. Delete items
+        8. Exit''')
+        print("")
+
+        selection = input("What would you like to do?: ")
+        print("")
+
+        if selection == "1":
+            print_shopping_list()
+        elif selection == "2":
+            added_items = add_new_items()
+            update_worksheet(added_items, 'shopping')
+        elif selection == "3":
+            pass
+        elif selection == "4":
+            pass
+        elif selection == "5":
+            pass
+        elif selection == "6":
+            pass
+        elif selection == "7":
+            pass
+        elif selection == "8":
+            sys.exit()
+        else:
+            print("You did not make a valid selection")
+
 def shopping_list_items():
     """
     returns the values of the shopping list
     """
-    shopping = SHEET.worksheet('shopping')
-    #gets all the values in the shopping list without the headings row
-    shopping_list_data = shopping.col_values(1)
+    shopping = SHEET.worksheet('shopping').get_all_values()
+    shopping_list_data = shopping[-1]
 
-    return shopping_list_data[1:]
+    return shopping_list_data
 
 shopping_list = shopping_list_items()
 
@@ -34,6 +77,10 @@ def print_shopping_list():
     """
     print("Loading your shopping list...\n")
     print("--- SHOPPING LIST ---\n")
+
+    #retrieve shopping list updates
+    shopping_list = shopping_list_items()
+
     for item in shopping_list:
         print("- " + item)
     
@@ -82,48 +129,20 @@ def validate_data(words):
     
     return True
 
-# Code copied with edits from Geek Tutorials on YouTube
-def main_menu():
+def update_worksheet(data, worksheet):
     """
-    Load a menu that will loop back once the functions in the
-    selections complete
+    Receive a list of values to insert into a worksheet
+    Update the relevant worksheet with the data provided
     """
-    while True:
-        print('''
-
-        Select the number of the action that you would like to do:
-
-        1. View Shopping List
-        2. Add items to shopping list
-        3. View all items
-        4. Remove item from shopping list
-        5. Check if item is on shopping list
-        6. Clear Shopping List
-        7. Delete items
-        8. Exit''')
-        print("")
-
-        selection = input("What would you like to do?: ")
-        print("")
-
-        if selection == "1":
-            print_shopping_list()
-        elif selection == "2":
-            add_new_items()
-        elif selection == "3":
-            pass
-        elif selection == "4":
-            pass
-        elif selection == "5":
-            pass
-        elif selection == "6":
-            pass
-        elif selection == "7":
-            pass
-        elif selection == "8":
-            sys.exit()
-        else:
-            print("You did not make a valid selection")
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    # get existing values in the first row
+    existing_values = worksheet_to_update.row_values(1)
+    # concatate the existing values with the new items
+    updated_values = existing_values + data
+    # amend the first row with the updated values
+    worksheet_to_update.update([updated_values], '1:1')
+    print(f"{worksheet} worksheet updated successfully\n")
 
 # MAIN MENU
 

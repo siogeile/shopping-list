@@ -48,3 +48,9 @@ Happy coding!
 ## Journal
 
 * Realised some of my early commit messages were too long, took note to keep commit message length in mind going forward
+
+* List will not update unless I exit the app and re-enter - attempting to fix this issue (fixed it by calling "shopping_list = shopping_list_items()" into the print_shopping_list())
+
+## Future Features
+
+* Validate to ensure there is no empty space at the start of an entry
