@@ -42,3 +42,8 @@ Happy coding!
 #### [Geek Tutorials](https://www.youtube.com/watch?v=0m7csmqWAgI) on YouTube
 
 *  Used code from "Python - Code a Shopping List App (Part 1/3) to get me started in commit f1d5751
+
+
+## Journal
+
+* Realised some of my early commit messages were too long, took note to keep commit message length in mind going forward
