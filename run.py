@@ -38,7 +38,7 @@ def print_shopping_list():
     
     print("")
 
-print_shopping_list()
+# print_shopping_list()
 
 def add_new_items():
     """
@@ -52,4 +52,42 @@ def add_new_items():
     new_items = data_str.split(",")
     print(f"You have added {new_items} to your list")
 
-add_new_items()
+# add_new_items()
+
+# MAIN MENU
+# Code copied with edits from Geek Tutorials on YouTube
+
+print("")
+print('''SHOPPING LIST
+
+Select the number of the action that you would like to do:
+
+1. View Shopping List
+2. Add items to shopping list
+3. View all items
+4. Remove item from shopping list
+5. Check if item is on shopping list
+6. Clear Shopping List
+7. Delete items
+8. Exit''')
+
+selection = input("Make your selection here: ")
+
+if selection == "1":
+    pass
+elif selection == "2":
+    pass
+elif selection == "3":
+    pass
+elif selection == "4":
+    pass
+elif selection == "5":
+    pass
+elif selection == "6":
+    pass
+elif selection == "7":
+    pass
+elif selection == "8":
+    sys.exit()
+else:
+    print("You did not make a valid selection")
