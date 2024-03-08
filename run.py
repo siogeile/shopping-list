@@ -2,6 +2,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import sys
+# import os
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,13 +25,15 @@ def main_menu():
     selections complete
     """
     while True:
+        clear_screen()
         print('''
         Select the number of the action that you would like to do:
 
         1. View Shopping List
         2. Add items to shopping list
         3. Remove item from shopping list
-        4. Exit''')
+        4. Clear previous entries
+        5. Exit''')
         print("")
 
         selection = input("What would you like to do?:\n ")
@@ -43,9 +47,29 @@ def main_menu():
             deduction = remove_items()
             update_removal(deduction, 'shopping')
         elif selection == "4":
+            clear_screen()
+            main_menu()
+        elif selection == "5":
             sys.exit()
         else:
             print("You did not make a valid selection")
+
+def clear_screen():
+    """
+    Clears the screen using ANSI VT100 codes
+    """
+    print('\033[H\033[J')
+    return
+
+def return_to_home(action_function):
+    print("\nDo you want to repeat this action or return home?")
+    return_home = input("Enter 'repeat' or 'home': ").lower()
+    if return_home == 'home':
+        return # exit loop
+    elif return_home == 'repeat':
+        action_function()
+    else:
+        print("You did not make a valid selection")
 
 def shopping_list_items():
     """
@@ -62,6 +86,7 @@ def print_shopping_list():
     """
     Prints the shopping list to the terminal
     """
+    clear_screen()
     print("Loading your shopping list...\n")
     print("--- SHOPPING LIST ---\n")
 
@@ -71,11 +96,14 @@ def print_shopping_list():
     for item in shopping_list:
         print("- " + item)
 
+    return_to_home(print_shopping_list)
+
 def add_new_items():
     """
     Get item names input from the user
     """
     while True:
+        clear_screen()
         print("")
         print("Add items to your shopping list.")
         print("- Separate items with commas")
@@ -92,11 +120,14 @@ def add_new_items():
     
     return new_items
 
+    return_to_home(add_new_items)
+
 def remove_items():
     """
     Get input for items to remove from the user
     """
     while True:
+        clear_screen()
         print("")
         print("Remove items to your shopping list.")
         print("Be careful of the spelling")
@@ -113,6 +144,8 @@ def remove_items():
     print(f"You have removed {removed_items} from your list")
     
     return removed_items
+
+    return_to_home(remove_items)
 
 def validate_data(words):
     """
