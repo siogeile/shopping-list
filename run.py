@@ -38,17 +38,17 @@ def main_menu():
         print("")
 
         selection = input("What would you like to do?:\n ")
-        print("")
 
         if selection == "1":
             print_shopping_list()
         elif selection == "2":
-            added_items = add_new_items()
-            update_worksheet(added_items, 'shopping')
+            addition = add_new_items()
+            update_worksheet(addition, 'shopping')
         elif selection == "3":
             pass
         elif selection == "4":
-            pass
+            deduction = remove_items()
+            update_removal(deduction, 'shopping')
         elif selection == "5":
             pass
         elif selection == "6":
@@ -107,6 +107,28 @@ def add_new_items():
     
     return new_items
 
+def remove_items():
+    """
+    Get input for items to remove from the user
+    """
+    while True:
+        print("")
+        print("Remove items to your shopping list.")
+        print("Be careful of the spelling")
+        print("- Separate items with commas")
+        print("- Example: Spinach, Ginger ale, Chocolate\n")
+
+        data_str = input("Remove items: \n")
+        removed_items = data_str.split(",")
+
+        if validate_data(removed_items) and validate_removal(removed_items):
+            print("Items located and validated")
+            break
+
+    print(f"You have removed {removed_items} from your list")
+    
+    return removed_items
+
 def validate_data(words):
     """
     Raises ValueError if any input item is empty or too long
@@ -129,6 +151,23 @@ def validate_data(words):
     
     return True
 
+def validate_removal(words):
+    """
+    Raises ValueError if any input item is not on the shopping list
+    """
+    shopping_list = shopping_list_items()
+
+    try:
+        for word in words:
+            if word not in shopping_list:
+                raise ValueError(f"{word} not found on the shopping list"
+            )
+    except ValueError as e:
+        print(f"Invalid removal: {e}, please try again.\n")
+        return False
+
+    return True
+
 def update_worksheet(data, worksheet):
     """
     Receive a list of values to insert into a worksheet
@@ -136,13 +175,43 @@ def update_worksheet(data, worksheet):
     """
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
+
     # get existing values in the first row
     existing_values = worksheet_to_update.row_values(1)
+
     # concatate the existing values with the new items
     updated_values = existing_values + data
+
     # amend the first row with the updated values
     worksheet_to_update.update([updated_values], '1:1')
+
     print(f"{worksheet} worksheet updated successfully\n")
+
+def update_removal(data, worksheet):
+    """
+    Receive a list of values to remove from a worksheet
+    Update the relevant worksheet by removing the specified items
+    """
+    print(f"Updating {worksheet} list...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+
+    # get existing values in the first row
+    existing_values = worksheet_to_update.row_values(1)
+
+    # Create a new list excluding the items to be removed
+    updated_values = [item for item in\
+        worksheet_to_update.row_values(1) if item not in data]
+
+    # get number of values in the list before deductions
+    num = len(existing_values)
+
+    # update the same value of cells in the row with empty values
+    worksheet_to_update.update([[""] * num], '1:1')
+
+    # Add the new values to the sheet once the data has been cleared
+    worksheet_to_update.update([updated_values], '1:1')
+
+    print(f"{worksheet} list updated successfully\n")
 
 # MAIN MENU
 
