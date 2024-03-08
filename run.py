@@ -24,17 +24,12 @@ def main_menu():
     """
     while True:
         print('''
-
         Select the number of the action that you would like to do:
 
         1. View Shopping List
         2. Add items to shopping list
-        3. View all items
-        4. Remove item from shopping list
-        5. Check if item is on shopping list
-        6. Clear Shopping List
-        7. Delete items
-        8. Exit''')
+        3. Remove item from shopping list
+        4. Exit''')
         print("")
 
         selection = input("What would you like to do?:\n ")
@@ -45,17 +40,9 @@ def main_menu():
             addition = add_new_items()
             update_worksheet(addition, 'shopping')
         elif selection == "3":
-            pass
-        elif selection == "4":
             deduction = remove_items()
             update_removal(deduction, 'shopping')
-        elif selection == "5":
-            pass
-        elif selection == "6":
-            pass
-        elif selection == "7":
-            pass
-        elif selection == "8":
+        elif selection == "4":
             sys.exit()
         else:
             print("You did not make a valid selection")
@@ -83,8 +70,6 @@ def print_shopping_list():
 
     for item in shopping_list:
         print("- " + item)
-    
-    print("")
 
 def add_new_items():
     """

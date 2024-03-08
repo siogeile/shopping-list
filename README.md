@@ -36,21 +36,44 @@ Happy coding!
 
 #### Love Sandwiches Code Along Project by the Code Institute
 
-* Used code from the love-sandwiches walkthrough project closely up until commits 390bc5d and 1963a99.
-* Here I was still using code from that project but only relevant sections from the project that I changed to work for my app
+* Used code from the love-sandwiches walkthrough project closely up until
+commits 390bc5d and 1963a99.
+* Here I was still using code from that project but only relevant sections from
+the project that I changed to work for my app
 
 #### [Geek Tutorials](https://www.youtube.com/watch?v=0m7csmqWAgI) on YouTube
 
-*  Used code from "Python - Code a Shopping List App (Part 1/3) to get me started in commit f1d5751
-* Started to write my own code within this code in commit eacf398 when adding functions to menu items 1 and 2
+*  Used code from "Python - Code a Shopping List App (Part 1/3) to get me
+started in commit f1d5751
+* Started to write my own code within this code in commit eacf398 when adding
+functions to menu items 1 and 2
 
 
 ## Journal
 
-* Realised some of my early commit messages were too long, took note to keep commit message length in mind going forward
+* Realised some of my early commit messages were too long, took note to keep
+commit message length in mind going forward
 
-* List will not update unless I exit the app and re-enter - attempting to fix this issue (fixed it by calling "shopping_list = shopping_list_items()" into the print_shopping_list())
+* List will not update unless I exit the app and re-enter - attempting to fix
+this issue (fixed it by calling "shopping_list = shopping_list_items()" into
+the print_shopping_list())
 
 ## Future Features
 
-* Validate to ensure there is no empty space at the start of an entry
+* Add validation to ensure there is no empty space at the start of an entry
+or a function that clears blank spaces that are entered as the first character
+of an entry
+* Ask if user wants to repeat function or head back to the main screen
+after an action completes
+* Clear the terminal when we make a new selection for better user experience
+* Add new options:
+    - View all items
+        (items removed from shopping list are added to an items list)
+    - Check if item is on the shopping list, items list or neither
+    - Clear entire shopping list (move all items to items list)
+    - Show shopping list when customer is adding or removing items
+    - Delete items
+        (would function the same as remove currently does, remove would
+            instead move items to the items list)
+    - Create user accounts
+    - Ability to create multiple shopping lists for different purposes
