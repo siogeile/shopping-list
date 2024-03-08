@@ -1,3 +1,4 @@
+#xxxxxxxxxxxxxxxxxx__24_ROWS_HIGH_80_CHAR_WIDE__xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 import gspread
 from google.oauth2.service_account import Credentials
 import sys
@@ -32,9 +33,9 @@ def print_shopping_list():
     Prints the shopping list to the terminal
     """
     print("Loading your shopping list...\n")
-    print("Shopping List:")
+    print("--- SHOPPING LIST ---\n")
     for item in shopping_list:
-        print(item)
+        print("- " + item)
     
     print("")
 
@@ -42,15 +43,44 @@ def add_new_items():
     """
     Get item names input from the user
     """
-    print("")
-    print("Add items to your shopping list.")
-    print("- Separate items with commas")
-    print("- Example: Spinach, Ginger ale, Chocolate\n")
+    while True:
+        print("")
+        print("Add items to your shopping list.")
+        print("- Separate items with commas")
+        print("- Example: Spinach, Ginger ale, Chocolate\n")
 
-    data_str = input("Add items: \n")
-    new_items = data_str.split(",")
+        data_str = input("Add items: \n")
+        new_items = data_str.split(",")
+
+        if validate_data(new_items):
+            print("Items validated")
+            break
+
     print(f"You have added {new_items} to your list")
+    
+    return new_items
 
+def validate_data(words):
+    """
+    Raises ValueError if any input item is empty or too long
+    """
+    try:
+        for word in words:
+            if len(str(word)) > 20:
+                raise ValueError(
+                    "Single items should be less than 20 characters"
+                )
+            elif not str(word).strip():
+                raise ValueError(
+                    "Entry invalid.\
+                        Please make sure all entries contain \
+                            at least one character each"
+                )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+    
+    return True
 
 # Code copied with edits from Geek Tutorials on YouTube
 def main_menu():
