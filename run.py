@@ -38,21 +38,18 @@ def print_shopping_list():
     
     print("")
 
-# print_shopping_list()
-
 def add_new_items():
     """
     Get item names input from the user
     """
+    print("")
     print("Add items to your shopping list.")
     print("- Separate items with commas")
     print("- Example: Spinach, Ginger ale, Chocolate\n")
 
-    data_str = input("Add items to your list here: ")
+    data_str = input("Add items: \n")
     new_items = data_str.split(",")
     print(f"You have added {new_items} to your list")
-
-# add_new_items()
 
 # MAIN MENU
 # Code copied with edits from Geek Tutorials on YouTube
@@ -70,13 +67,15 @@ Select the number of the action that you would like to do:
 6. Clear Shopping List
 7. Delete items
 8. Exit''')
+print("")
 
-selection = input("Make your selection here: ")
+selection = input("What would you like to do?: ")
+print("")
 
 if selection == "1":
-    pass
+    print_shopping_list()
 elif selection == "2":
-    pass
+    add_new_items()
 elif selection == "3":
     pass
 elif selection == "4":
