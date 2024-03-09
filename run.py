@@ -1,8 +1,6 @@
-#xxxxxxxxxxxxxxxxxx__24_ROWS_HIGH_80_CHAR_WIDE__xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 import gspread
 from google.oauth2.service_account import Credentials
 import sys
-# import os
 
 
 SCOPE = [
