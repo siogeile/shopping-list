@@ -86,15 +86,15 @@ my code editor:
 
 ### Add Item
 
-#### Collect user input
-#### Validate user data
-#### Update Google Sheets with user data
+* Collect user input
+* Validate user data
+* Update Google Sheets with user data
 
 ### Remove Item
 
-#### Collect user input
-#### Validate user request
-#### Remove appropriate values from Google Sheets
+* Collect user input
+* Validate user request
+* Remove appropriate values from Google Sheets
 
 ### Exit
 
@@ -139,15 +139,23 @@ user experience
 
 link to linter [here](https://pep8ci.herokuapp.com/)
 
+Code passes with no errors
+
 ## Manual Testing
 
 Does the app handle invalid inputs to effectively manage data, create
 a positive user experience and ensure the app functions as expected?
 
+Yes
+
 Does the project have logic that flow without unexpected interuption or 
 error messages?
 
+Yes
+
 Does the deployed app run as expected on the heroku app?
+
+Yes
 
 ## Browser Compatibility
 
@@ -164,11 +172,6 @@ Safari         | for MacOS            | ❌
 
 The Code Institute mock termincal does  <b>not</b> work on mobile devices or 
 the Safari browser. I was unable to test the linux browser compatability but I believe there are no reported issues.
-
-
-## Solved Bugs
-
-## Known Bugs
 
 <br 
 />
@@ -371,10 +374,6 @@ updated my google sheet
 
 * Realised some of my early commit messages were too long, took note to keep
 commit message length in mind going forward
-
-* List will not update unless I exit the app and re-enter - attempting to fix
-this issue (fixed it by calling "shopping_list = shopping_list_items()" into
-the print_shopping_list())
 
 <br 
 />
